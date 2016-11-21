@@ -1,0 +1,42 @@
+﻿@model List<PregledPrograma.Models.Home.KosuljicaViewModel>
+
+<div>
+    <h2>Pregled košuljica</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @*<th>ID</th>*@
+                <th>Start emisije</th>
+                <th>Trajanje</th>
+                <th>Naziv emisije</th>
+                <th>Žanr</th>
+                <th>Tip emitovanja</th>
+                <th>Redakcija</th>
+                <th>Broj epizode</th>
+                <th>Opis emisije</th>
+                <th>PG</th>
+                <th>Komentar</th>
+                <th>COD/SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PregledPrograma.Models.Home.KosuljicaViewModel kosuljica in Model)
+            {
+                <tr>
+                    @*<td>@kosuljica.ID</td>*@
+                    <td>@Html.DisplayFor(k => kosuljica.StartEmisije)</td>
+                    <td>@Html.DisplayFor(k => kosuljica.DuracijaEmisije)</td>
+                    <td>@kosuljica.NaslovEmisije</td>
+                    <td>@kosuljica.Zanr</td>
+                    <td>@kosuljica.TipEmitovanja</td>
+                    <td>@kosuljica.NazivRedakcije</td>
+                    <td>@kosuljica.BrojEpizode</td>
+                    <td>@kosuljica.OpisEmisije</td>
+                    <td>@kosuljica.Rejting</td>
+                    <td>@kosuljica.Komentar</td>
+                    <td>@kosuljica.CodSat</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

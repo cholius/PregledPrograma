@@ -18,10 +18,12 @@ namespace PregledPrograma
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/jquery-ui-1.12.1/jquery-ui.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Scripts/jquery-ui-1.12.1/jquery-ui.css",
                       "~/Content/site.css"));
         }
     }

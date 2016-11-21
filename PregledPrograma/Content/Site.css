@@ -40,3 +40,10 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+
+.sort-placeholder {
+  border: 1px dotted;
+  height: 22px;
+  background-color: lightgreen;
+}

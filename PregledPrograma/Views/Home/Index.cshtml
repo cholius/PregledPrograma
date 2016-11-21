@@ -2,6 +2,7 @@
 
 <div>
     <h2>Pregled košuljica</h2>
+    @Html.Hidden("datum", (object)ViewBag.Datum)
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -19,10 +20,10 @@
                 <th>COD/SAT</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="sort" class="sort">
             @foreach (PregledPrograma.Models.Home.KosuljicaViewModel kosuljica in Model)
             {
-                <tr>
+                <tr id="@kosuljica.ID">
                     @*<td>@kosuljica.ID</td>*@
                     <td>@Html.DisplayFor(k => kosuljica.StartEmisije)</td>
                     <td>@Html.DisplayFor(k => kosuljica.DuracijaEmisije)</td>
@@ -40,3 +41,58 @@
         </tbody>
     </table>
 </div>
+
+
+@section scripts {
+<script>
+    $(function () {
+        bindSortable();
+    });
+
+    function bindSortable() {
+        $("#sort").sortable({
+            placeholder: "sort-placeholder",
+            update: function (event, ui) {
+                //console.clear();
+                //console.log("Prethodni: " + ui.item[0].previousElementSibling.innerHTML);
+                //console.log("Trenutni:  " + ui.item[0].innerHTML);
+                //console.log("Sljedeći:  " + ui.item[0].nextElementSibling.innerHTML);
+                //var idPrethodni = $(ui.item[0].previousElementSibling).attr("data-id") || -1;
+                //var idTrenutni = $(ui.item[0]).attr("data-id");
+                //var idSljedeci = $(ui.item[0].nextElementSibling).attr("data-id") || -1;
+                //alert(idPrethodni + "\n" + idTrenutni + "\n" + idSljedeci);
+
+                var ids = $("#sort").sortable("toArray");  // ID elemenata po redu kako je prikazano
+                $.each(ids, function (index, value) {
+                    console.log(index + " -> " + value);
+                });
+                update(ids);
+            }
+        });
+    }
+
+    function update(ids) {
+        var datum = $("#datum").val();
+        $.ajax({
+            type: "POST",
+            url: "/Home/Update",
+            traditional: true,
+            data: { datum: datum, ids: ids },
+            cache: false,
+            //
+            beforeSend: function () {
+
+            },
+            success: function (partial, textStatus, jqXHR) {
+                window.location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            },
+            complete: function (jqXHR, textStatus) {
+
+            }
+        });
+    }
+</script>
+}

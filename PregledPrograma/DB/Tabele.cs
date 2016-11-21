@@ -52,4 +52,15 @@ namespace PregledPrograma.DB
         public int ID { get; set; }
         public string OznakaRejtinga { get; set; }
     }
+
+     [Table("Parametri")]
+     public class Parametar
+     {
+         [Key]
+         public int ID { get; set; }
+         public string Naziv { get; set; }
+         public string Vrijednost { get; set; }
+         public bool Aktivan { get; set; }
+         public string Opis { get; set; }
+     }
 }

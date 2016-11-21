@@ -19,6 +19,7 @@ namespace PregledPrograma.DB
         public DbSet<TipEmitovanja> TipoviEmitovanja { get; set; }
         public DbSet<Redakcija> Redakcije { get; set; }
         public DbSet<Rejting> Rejtinzi { get; set; }
+        public DbSet<Parametar> Parametri { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
